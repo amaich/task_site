@@ -4,6 +4,7 @@ from django.views import generic
 from .models import *
 # Create your views here.
 
+
 class TaskListView(generic.ListView):
     model = Tasks
     context_object_name = "tasks"
