@@ -27,3 +27,9 @@ class Tasks(models.Model):
 
     def __str__(self):
         return self.task_name
+
+    @property
+    def description_short(self, obj: Tasks):
+        if len(obj.task_description) < 48:
+            return obj.task_description
+        return obj.task_description[:48] + "..."

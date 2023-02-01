@@ -4,12 +4,7 @@ from .models import *
 
 @admin.register(Tasks)
 class TasksAdmin(admin.ModelAdmin):
-    list_display = ("task_name", "task_description", "task_reporter", "task_executor", "task_status")
-    
-    def description_short(self, obj):
-        if len(obj.task_description) < 48:
-            return obj.task_description
-        return obj.task_description[:48] + "..."
+    list_display = ("task_name", "description_short", "task_reporter", "task_executor", "task_status")
     
     def get_queryset(self, request):
         return Tasks.objects.select_related("task_reporter")
